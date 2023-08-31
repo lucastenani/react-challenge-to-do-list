@@ -1,7 +1,12 @@
 import "./global.css";
+import styles from "./App.module.css";
 
 function App() {
-  return <h1>Hello, world!</h1>;
+  return (
+    <>
+      <main className={styles.main}></main>
+    </>
+  );
 }
 
 export default App;
