@@ -9,8 +9,8 @@ function App() {
       <Header />
       <main className={styles.main}>
         <form className={styles.taskForm}>
-          <input type="text" placeholder="Add a new task" />
-          <button className={styles.createTaskButton}>
+          <input placeholder="Add a new task" name="task" required />
+          <button className={styles.createTaskButton} type="submit">
             <p>Create</p>
             <PlusCircle size={16} color="#F2F2F2" />
           </button>
