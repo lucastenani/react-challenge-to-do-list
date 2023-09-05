@@ -40,3 +40,57 @@
   font-weight: 700;
   color: var(--gray-100);
 }
+
+.tasksHeader {
+  margin-top: 4.06rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tasksCreated,
+.tasksCompleted {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.tasksCreatedText,
+.tasksCompletedText {
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.tasksCreatedText {
+  color: var(--blue);
+}
+
+.tasksCompletedText {
+  color: var(--purple);
+}
+
+.tasksAmount {
+  background-color: var(--gray-400);
+  padding: 0.125rem 0.5rem;
+  border-radius: 50%;
+  color: var(--gray-200);
+  font-size: 0.75rem;
+}
+
+.tasksMainEmpty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  border-radius: 8px;
+  border-top: 1px solid var(--gray-400);
+  margin-top: 1.562rem;
+  padding: 4rem 1.5rem;
+}
+
+.tasksMainEmpty article {
+  text-align: center;
+  line-height: 140%;
+}
