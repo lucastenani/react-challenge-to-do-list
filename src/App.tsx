@@ -1,7 +1,7 @@
 import "./global.css";
 import { Header } from "./components/Header";
+import { NoTasksMessage } from "./components/NoTasksMessage";
 import { PlusCircle } from "@phosphor-icons/react";
-import ClipBoard from "./assets/clipboard.svg";
 import styles from "./App.module.css";
 
 function App() {
@@ -29,13 +29,7 @@ function App() {
             </article>
           </header>
 
-          <main className={styles.tasksMainEmpty}>
-            <img src={ClipBoard} alt="Clipboard" />
-            <article>
-              <strong>You don't have tasks registered yet</strong>
-              <p>Create tasks and organize your to-do items</p>
-            </article>
-          </main>
+          <NoTasksMessage />
         </section>
       </main>
     </>

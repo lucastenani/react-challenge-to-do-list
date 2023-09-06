@@ -77,20 +77,3 @@
   color: var(--gray-200);
   font-size: 0.75rem;
 }
-
-.tasksMainEmpty {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  border-radius: 8px;
-  border-top: 1px solid var(--gray-400);
-  margin-top: 1.562rem;
-  padding: 4rem 1.5rem;
-}
-
-.tasksMainEmpty article {
-  text-align: center;
-  line-height: 140%;
-}
