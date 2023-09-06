@@ -1,5 +1,5 @@
-import RocketIcon from "../assets/rocket.svg";
-import styles from "./Header.module.css";
+import RocketIcon from "../../assets/rocket.svg";
+import styles from "./header.module.css";
 
 export function Header() {
   return (
