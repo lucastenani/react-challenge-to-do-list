@@ -77,3 +77,10 @@
   color: var(--gray-200);
   font-size: 0.75rem;
 }
+
+.tasksList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1.562rem;
+}

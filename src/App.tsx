@@ -1,6 +1,7 @@
 import "./global.css";
 import { Header } from "./components/Header";
-import { NoTasksMessage } from "./components/NoTasksMessage";
+// import { NoTasksMessage } from "./components/NoTasksMessage";
+import { Task } from "./components/Task";
 import { PlusCircle } from "@phosphor-icons/react";
 import styles from "./App.module.css";
 
@@ -29,7 +30,13 @@ function App() {
             </article>
           </header>
 
-          <NoTasksMessage />
+          {/* <NoTasksMessage /> */}
+          <main className={styles.tasksList}>
+            <Task />
+            <Task />
+            <Task />
+            <Task />
+          </main>
         </section>
       </main>
     </>
