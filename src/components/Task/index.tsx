@@ -20,14 +20,9 @@ export function Task() {
 
   return (
     <article className={styles.task}>
-      <button title="Check task">
+      <button title="Check task" onClick={toggleCheckbox}>
         {isChecked ? (
-          <CheckCircle
-            size={24}
-            className={styles.checkCircle}
-            weight="fill"
-            onClick={toggleCheckbox}
-          />
+          <CheckCircle size={24} className={styles.checkCircle} weight="fill" />
         ) : (
           <Circle
             size={24}
@@ -35,7 +30,6 @@ export function Task() {
             weight={isHovered ? "duotone" : "light"}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-            onClick={toggleCheckbox}
           />
         )}
       </button>
