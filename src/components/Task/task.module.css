@@ -33,12 +33,14 @@
 .taskText {
   color: var(--gray-100);
   font-size: 0.875rem;
+  flex: 1;
 }
 
 .taskTextChecked {
   color: var(--gray-300);
   font-size: 0.875rem;
   text-decoration: line-through;
+  flex: 1;
 }
 
 .deleteTask {

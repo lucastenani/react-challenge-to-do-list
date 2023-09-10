@@ -5,6 +5,25 @@ import { Task } from "./components/Task";
 import { PlusCircle } from "@phosphor-icons/react";
 import styles from "./App.module.css";
 
+export interface TasksProps {
+  id: number;
+  description: string;
+  isComplete: boolean;
+}
+
+const tasks: TasksProps[] = [
+  {
+    id: 1,
+    description: "Train Jiu-Jitsu",
+    isComplete: false,
+  },
+  {
+    id: 2,
+    description: "Train Muay Thai",
+    isComplete: true,
+  },
+];
+
 function App() {
   return (
     <>
@@ -32,10 +51,16 @@ function App() {
 
           {/* <NoTasksMessage /> */}
           <main className={styles.tasksList}>
-            <Task />
-            <Task />
-            <Task />
-            <Task />
+            {tasks.map((task: TasksProps) => {
+              return (
+                <Task
+                  key={task.id}
+                  id={task.id}
+                  description={task.description}
+                  isComplete={task.isComplete}
+                />
+              );
+            })}
           </main>
         </section>
       </main>

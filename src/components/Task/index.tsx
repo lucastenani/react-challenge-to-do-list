@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { CheckCircle, Circle, Trash } from "@phosphor-icons/react";
 import styles from "./task.module.css";
+import { TasksProps } from "../../App";
 
-export function Task() {
+export function Task(props: TasksProps) {
   const [isHovered, setIsHovered] = useState(false);
-  const [isChecked, setIsChecked] = useState(false);
+  const [isChecked, setIsChecked] = useState(props.isComplete);
 
   const toggleCheckbox = () => {
     setIsChecked(!isChecked);
@@ -35,8 +36,7 @@ export function Task() {
       </button>
 
       <p className={isChecked ? styles.taskTextChecked : styles.taskText}>
-        Integer urna interdum massa libero auctor neque turpis turpis semper.
-        Duis vel sed fames integer.
+        {props.description}
       </p>
 
       <button title="Delete task" className={styles.deleteTask}>
