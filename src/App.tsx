@@ -1,5 +1,6 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { PlusCircle } from "@phosphor-icons/react";
+import { v4 as uuidv4 } from "uuid";
 import { Header } from "./components/Header";
 import { NoTasksMessage } from "./components/NoTasksMessage";
 import { Task } from "./components/Task";
@@ -7,7 +8,7 @@ import "./global.css";
 import styles from "./App.module.css";
 
 export interface TasksProps {
-  id: number;
+  id: string;
   description: string;
   isComplete: boolean;
 }
@@ -20,7 +21,7 @@ function App() {
     event.preventDefault();
 
     const newTask: TasksProps = {
-      id: 3,
+      id: uuidv4(),
       description: newTaskText,
       isComplete: false,
     };
