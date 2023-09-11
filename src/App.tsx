@@ -1,7 +1,7 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { PlusCircle } from "@phosphor-icons/react";
 import { Header } from "./components/Header";
-// import { NoTasksMessage } from "./components/NoTasksMessage";
+import { NoTasksMessage } from "./components/NoTasksMessage";
 import { Task } from "./components/Task";
 import "./global.css";
 import styles from "./App.module.css";
@@ -63,19 +63,22 @@ function App() {
             </article>
           </header>
 
-          {/* <NoTasksMessage /> */}
-          <main className={styles.tasksList}>
-            {tasks.map((task: TasksProps) => {
-              return (
-                <Task
-                  key={task.id}
-                  id={task.id}
-                  description={task.description}
-                  isComplete={task.isComplete}
-                />
-              );
-            })}
-          </main>
+          {tasks.length > 0 ? (
+            <main className={styles.tasksList}>
+              {tasks.map((task: TasksProps) => {
+                return (
+                  <Task
+                    key={task.id}
+                    id={task.id}
+                    description={task.description}
+                    isComplete={task.isComplete}
+                  />
+                );
+              })}
+            </main>
+          ) : (
+            <NoTasksMessage />
+          )}
         </section>
       </main>
     </>
