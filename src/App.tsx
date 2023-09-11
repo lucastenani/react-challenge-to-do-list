@@ -1,8 +1,9 @@
-import "./global.css";
+import { ChangeEvent, FormEvent, useState } from "react";
+import { PlusCircle } from "@phosphor-icons/react";
 import { Header } from "./components/Header";
 // import { NoTasksMessage } from "./components/NoTasksMessage";
 import { Task } from "./components/Task";
-import { PlusCircle } from "@phosphor-icons/react";
+import "./global.css";
 import styles from "./App.module.css";
 
 export interface TasksProps {
@@ -11,26 +12,39 @@ export interface TasksProps {
   isComplete: boolean;
 }
 
-const tasks: TasksProps[] = [
-  {
-    id: 1,
-    description: "Train Jiu-Jitsu",
-    isComplete: false,
-  },
-  {
-    id: 2,
-    description: "Train Muay Thai",
-    isComplete: true,
-  },
-];
-
 function App() {
+  const [tasks, setTasks] = useState<TasksProps[]>([]);
+  const [newTaskText, setNewTaskText] = useState("");
+
+  const handleCreateNewTask = (event: FormEvent) => {
+    event.preventDefault();
+
+    const newTask: TasksProps = {
+      id: 3,
+      description: newTaskText,
+      isComplete: false,
+    };
+
+    setTasks([newTask, ...tasks]);
+    setNewTaskText("");
+  };
+
+  const handleNewTaskChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setNewTaskText(event.target.value);
+  };
+
   return (
     <>
       <Header />
       <main className={styles.main}>
-        <form className={styles.taskForm}>
-          <input placeholder="Add a new task" name="task" required />
+        <form onSubmit={handleCreateNewTask} className={styles.taskForm}>
+          <input
+            onChange={handleNewTaskChange}
+            value={newTaskText}
+            placeholder="Add a new task"
+            name="task"
+            required
+          />
           <button className={styles.createTaskButton} type="submit">
             <p>Create</p>
             <PlusCircle size={16} color="#F2F2F2" />
