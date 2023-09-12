@@ -5,6 +5,7 @@ import { TasksProps } from "../../App";
 
 interface TaskPropsWithToggle extends TasksProps {
   toggleTaskCompletion: (taskId: string) => void;
+  onDeleteTask: (taskId: string) => void;
 }
 
 export function Task(props: TaskPropsWithToggle) {
@@ -20,6 +21,10 @@ export function Task(props: TaskPropsWithToggle) {
 
   const handleMouseLeave = () => {
     setIsHovered(false);
+  };
+
+  const handleDeleteTask = () => {
+    props.onDeleteTask(props.id);
   };
 
   return (
@@ -44,7 +49,11 @@ export function Task(props: TaskPropsWithToggle) {
         {props.description}
       </p>
 
-      <button title="Delete task" className={styles.deleteTask}>
+      <button
+        title="Delete task"
+        className={styles.deleteTask}
+        onClick={handleDeleteTask}
+      >
         <Trash size={14} />
       </button>
     </article>

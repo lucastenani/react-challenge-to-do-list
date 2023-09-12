@@ -42,6 +42,14 @@ function App() {
     );
   };
 
+  const deleteTask = (taskId: string) => {
+    const tasksWithoutDeletedOne = tasks.filter((task) => {
+      return task.id !== taskId;
+    });
+
+    setTasks(tasksWithoutDeletedOne);
+  };
+
   return (
     <>
       <Header />
@@ -82,6 +90,7 @@ function App() {
                     description={task.description}
                     isComplete={task.isComplete}
                     toggleTaskCompletion={toggleTaskCompletion}
+                    onDeleteTask={deleteTask}
                   />
                 );
               })}
