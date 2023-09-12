@@ -34,6 +34,14 @@ function App() {
     setNewTaskText(event.target.value);
   };
 
+  const toggleTaskCompletion = (taskId: string) => {
+    setTasks((prevTasks) =>
+      prevTasks.map((task) =>
+        task.id === taskId ? { ...task, isComplete: !task.isComplete } : task
+      )
+    );
+  };
+
   return (
     <>
       <Header />
@@ -66,13 +74,14 @@ function App() {
 
           {tasks.length > 0 ? (
             <main className={styles.tasksList}>
-              {tasks.map((task: TasksProps) => {
+              {tasks.map((task) => {
                 return (
                   <Task
                     key={task.id}
                     id={task.id}
                     description={task.description}
                     isComplete={task.isComplete}
+                    toggleTaskCompletion={toggleTaskCompletion}
                   />
                 );
               })}

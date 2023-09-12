@@ -3,12 +3,15 @@ import { CheckCircle, Circle, Trash } from "@phosphor-icons/react";
 import styles from "./task.module.css";
 import { TasksProps } from "../../App";
 
-export function Task(props: TasksProps) {
+interface TaskPropsWithToggle extends TasksProps {
+  toggleTaskCompletion: (taskId: string) => void;
+}
+
+export function Task(props: TaskPropsWithToggle) {
   const [isHovered, setIsHovered] = useState(false);
-  const [isChecked, setIsChecked] = useState(props.isComplete);
 
   const toggleCheckbox = () => {
-    setIsChecked(!isChecked);
+    props.toggleTaskCompletion(props.id);
   };
 
   const handleMouseEnter = () => {
@@ -22,7 +25,7 @@ export function Task(props: TasksProps) {
   return (
     <article className={styles.task}>
       <button title="Check task" onClick={toggleCheckbox}>
-        {isChecked ? (
+        {props.isComplete ? (
           <CheckCircle size={24} className={styles.checkCircle} weight="fill" />
         ) : (
           <Circle
@@ -35,7 +38,9 @@ export function Task(props: TasksProps) {
         )}
       </button>
 
-      <p className={isChecked ? styles.taskTextChecked : styles.taskText}>
+      <p
+        className={props.isComplete ? styles.taskTextChecked : styles.taskText}
+      >
         {props.description}
       </p>
 
