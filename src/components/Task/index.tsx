@@ -4,7 +4,7 @@ import styles from "./task.module.css";
 import { TasksProps } from "../../App";
 
 interface TaskPropsWithToggle extends TasksProps {
-  toggleTaskCompletion: (taskId: string) => void;
+  onUpdateTaskStatus: (taskId: string) => void;
   onDeleteTask: (taskId: string) => void;
 }
 
@@ -12,7 +12,7 @@ export function Task(props: TaskPropsWithToggle) {
   const [isHovered, setIsHovered] = useState(false);
 
   const toggleCheckbox = () => {
-    props.toggleTaskCompletion(props.id);
+    props.onUpdateTaskStatus(props.id);
   };
 
   const handleMouseEnter = () => {

@@ -34,16 +34,18 @@ function App() {
     setNewTaskText(event.target.value);
   };
 
-  const toggleTaskCompletion = (taskId: string) => {
-    setTasks((prevTasks) =>
-      prevTasks.map((task) =>
-        task.id === taskId ? { ...task, isComplete: !task.isComplete } : task
-      )
-    );
+  const updateTaskStatus = (taskId: string) => {
+    const tasksWithUpdatedOne: TasksProps[] = tasks.map((task) => {
+      return task.id === taskId
+        ? { ...task, isComplete: !task.isComplete }
+        : task;
+    });
+
+    setTasks(tasksWithUpdatedOne);
   };
 
   const deleteTask = (taskId: string) => {
-    const tasksWithoutDeletedOne = tasks.filter((task) => {
+    const tasksWithoutDeletedOne: TasksProps[] = tasks.filter((task) => {
       return task.id !== taskId;
     });
 
@@ -89,7 +91,7 @@ function App() {
                     id={task.id}
                     description={task.description}
                     isComplete={task.isComplete}
-                    toggleTaskCompletion={toggleTaskCompletion}
+                    onUpdateTaskStatus={updateTaskStatus}
                     onDeleteTask={deleteTask}
                   />
                 );
