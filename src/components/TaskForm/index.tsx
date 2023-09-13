@@ -1,6 +1,6 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { PlusCircle } from "@phosphor-icons/react";
-import styles from "./task-form.module.css";
+import styles from "./taskForm.module.css";
 
 interface TaskFormProps {
   onCreateTask: (newTaskText: string) => void;
