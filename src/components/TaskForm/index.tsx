@@ -15,7 +15,13 @@ export function TaskForm({ onCreateTask }: TaskFormProps) {
 
   const handleCreateNewTask = (event: FormEvent) => {
     event.preventDefault();
-    onCreateTask(newTaskText);
+
+    if (newTaskText.trim().length > 0) {
+      onCreateTask(newTaskText);
+    }
+
+    console.log(newTaskText.trim());
+
     setNewTaskText("");
   };
 
