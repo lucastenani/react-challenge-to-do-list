@@ -8,6 +8,7 @@ interface TaskFormProps {
 
 export function TaskForm({ onCreateTask }: TaskFormProps) {
   const [newTaskText, setNewTaskText] = useState("");
+  const isNewTaskTextEmpty = newTaskText.trim().length === 0;
 
   const handleNewTaskChange = (event: ChangeEvent<HTMLInputElement>) => {
     setNewTaskText(event.target.value);
@@ -16,12 +17,7 @@ export function TaskForm({ onCreateTask }: TaskFormProps) {
   const handleCreateNewTask = (event: FormEvent) => {
     event.preventDefault();
 
-    if (newTaskText.trim().length > 0) {
-      onCreateTask(newTaskText);
-    }
-
-    console.log(newTaskText.trim());
-
+    onCreateTask(newTaskText);
     setNewTaskText("");
   };
 
@@ -34,7 +30,11 @@ export function TaskForm({ onCreateTask }: TaskFormProps) {
         name="task"
         required
       />
-      <button className={styles.createTaskButton} type="submit">
+      <button
+        className={styles.createTaskButton}
+        type="submit"
+        disabled={isNewTaskTextEmpty}
+      >
         <p>Create</p>
         <PlusCircle size={16} color="#F2F2F2" />
       </button>

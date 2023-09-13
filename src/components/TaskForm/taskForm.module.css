@@ -25,8 +25,13 @@
   transition: all 0.3s ease-in-out;
 }
 
-.createTaskButton:hover {
+.createTaskButton:not(:disabled):hover {
   background-color: var(--blue);
+}
+
+.createTaskButton:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
 }
 
 .createTaskButton p {
