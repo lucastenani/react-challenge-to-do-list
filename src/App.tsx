@@ -52,6 +52,7 @@ function App() {
         <TaskForm onCreateTask={handleCreateNewTask} />
 
         <TasksHeader tasks={tasks} />
+
         <section>
           {tasks.length > 0 ? (
             <main className={styles.tasksList}>
