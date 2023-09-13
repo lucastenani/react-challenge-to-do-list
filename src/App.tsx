@@ -17,6 +17,10 @@ function App() {
   const [tasks, setTasks] = useState<TasksProps[]>([]);
   const [newTaskText, setNewTaskText] = useState("");
 
+  const tasksCompletedLength = tasks.filter((task) => {
+    return task.isComplete === true;
+  }).length;
+
   const handleCreateNewTask = (event: FormEvent) => {
     event.preventDefault();
 
@@ -74,11 +78,15 @@ function App() {
           <header className={styles.tasksHeader}>
             <article className={styles.tasksCreated}>
               <p className={styles.tasksCreatedText}>Created tasks</p>
-              <p className={styles.tasksAmount}>0</p>
+              <p className={styles.tasksAmount}>{tasks.length}</p>
             </article>
             <article className={styles.tasksCompleted}>
               <p className={styles.tasksCompletedText}>Completed</p>
-              <p className={styles.tasksAmount}>0</p>
+              <p className={styles.tasksAmount}>
+                {tasks.length > 0
+                  ? `${tasksCompletedLength} of ${tasks.length}`
+                  : "0"}
+              </p>
             </article>
           </header>
 
