@@ -6,6 +6,7 @@ import { NoTasksMessage } from "./components/NoTasksMessage";
 import { Task } from "./components/Task";
 import "./global.css";
 import styles from "./App.module.css";
+import { TasksHeader } from "./components/TasksHeader";
 
 export interface TasksProps {
   id: string;
@@ -15,10 +16,6 @@ export interface TasksProps {
 
 function App() {
   const [tasks, setTasks] = useState<TasksProps[]>([]);
-
-  const tasksCompletedLength = tasks.filter((task) => {
-    return task.isComplete === true;
-  }).length;
 
   const handleCreateNewTask = (newTaskText: string) => {
     const newTask: TasksProps = {
@@ -54,22 +51,8 @@ function App() {
       <main className={styles.main}>
         <TaskForm onCreateTask={handleCreateNewTask} />
 
+        <TasksHeader tasks={tasks} />
         <section>
-          <header className={styles.tasksHeader}>
-            <article className={styles.tasksCreated}>
-              <p className={styles.tasksCreatedText}>Created tasks</p>
-              <p className={styles.tasksAmount}>{tasks.length}</p>
-            </article>
-            <article className={styles.tasksCompleted}>
-              <p className={styles.tasksCompletedText}>Completed</p>
-              <p className={styles.tasksAmount}>
-                {tasks.length > 0
-                  ? `${tasksCompletedLength} of ${tasks.length}`
-                  : "0"}
-              </p>
-            </article>
-          </header>
-
           {tasks.length > 0 ? (
             <main className={styles.tasksList}>
               {tasks.map((task) => {

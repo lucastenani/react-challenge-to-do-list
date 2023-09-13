@@ -4,43 +4,6 @@
   padding: 0 1rem;
 }
 
-.tasksHeader {
-  margin-top: 4.06rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.tasksCreated,
-.tasksCompleted {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-}
-
-.tasksCreatedText,
-.tasksCompletedText {
-  font-size: 0.875rem;
-  font-weight: 700;
-}
-
-.tasksCreatedText {
-  color: var(--blue);
-}
-
-.tasksCompletedText {
-  color: var(--purple);
-}
-
-.tasksAmount {
-  background-color: var(--gray-400);
-  padding: 0.125rem 0.5rem;
-  border-radius: 50%;
-  color: var(--gray-200);
-  font-size: 0.75rem;
-}
-
 .tasksList {
   display: flex;
   flex-direction: column;
