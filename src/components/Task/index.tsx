@@ -8,11 +8,17 @@ interface TaskPropsWithToggle extends TasksProps {
   onDeleteTask: (taskId: string) => void;
 }
 
-export function Task(props: TaskPropsWithToggle) {
+export function Task({
+  description,
+  id,
+  isComplete,
+  onDeleteTask,
+  onUpdateTaskStatus,
+}: TaskPropsWithToggle) {
   const [isHovered, setIsHovered] = useState(false);
 
   const toggleCheckbox = () => {
-    props.onUpdateTaskStatus(props.id);
+    onUpdateTaskStatus(id);
   };
 
   const handleMouseEnter = () => {
@@ -24,13 +30,13 @@ export function Task(props: TaskPropsWithToggle) {
   };
 
   const handleDeleteTask = () => {
-    props.onDeleteTask(props.id);
+    onDeleteTask(id);
   };
 
   return (
     <article className={styles.task}>
       <button title="Check task" onClick={toggleCheckbox}>
-        {props.isComplete ? (
+        {isComplete ? (
           <CheckCircle size={24} className={styles.checkCircle} weight="fill" />
         ) : (
           <Circle
@@ -43,10 +49,8 @@ export function Task(props: TaskPropsWithToggle) {
         )}
       </button>
 
-      <p
-        className={props.isComplete ? styles.taskTextChecked : styles.taskText}
-      >
-        {props.description}
+      <p className={isComplete ? styles.taskTextChecked : styles.taskText}>
+        {description}
       </p>
 
       <button
