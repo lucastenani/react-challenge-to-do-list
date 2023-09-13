@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { Header } from "./components/Header";
+import { TaskForm } from "./components/TaskForm";
 import { NoTasksMessage } from "./components/NoTasksMessage";
 import { Task } from "./components/Task";
 import "./global.css";
 import styles from "./App.module.css";
-import { TaskForm } from "./components/TaskForm";
 
 export interface TasksProps {
   id: string;
@@ -15,6 +15,7 @@ export interface TasksProps {
 
 function App() {
   const [tasks, setTasks] = useState<TasksProps[]>([]);
+
   const tasksCompletedLength = tasks.filter((task) => {
     return task.isComplete === true;
   }).length;
@@ -52,6 +53,7 @@ function App() {
       <Header />
       <main className={styles.main}>
         <TaskForm onCreateTask={handleCreateNewTask} />
+
         <section>
           <header className={styles.tasksHeader}>
             <article className={styles.tasksCreated}>
